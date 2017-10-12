@@ -1,6 +1,6 @@
 const express = require('express');
 const db = require('../database/index');
-
+const aws = require('./helpers/aws');
 const router = express.Router();
 
 router.use((req, res, next) => {
