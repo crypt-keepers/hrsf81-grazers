@@ -32,6 +32,12 @@ angular.module('eventHUD', ['ngRoute', 'ngMaterial'])
           user: signin => signin.getUser()
         }
       })
+      .when('/attendee', {
+        template: '<attendee-view user="$resolve.user"></attendee-view>',
+        resolve: {
+          user: signin => signin.getUser()
+        }
+      })
       .otherwise('/');
 
     $locationProvider.html5Mode(true);

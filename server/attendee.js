@@ -2,6 +2,7 @@ const express = require('express');
 const db = require('../database/index');
 const sendMessage = require('./twilio');
 
+
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -38,8 +39,8 @@ router.post('/', (req, res) => {
     .then(() => {
       res.status(201).send();
       sendMessage(attendeeParams)
-        .then((data) => {
-          // console.log(data);
+        .then((msgData) => {
+          // console.log(msgData.sid);
         });
     })
     .catch((err) => {

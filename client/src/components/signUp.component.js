@@ -5,8 +5,8 @@ module.exports = {
   controller($http, $scope) {
     this.user = 'Test';
     this.conferences = [{ name: 'test conference', id: 1 }, { name: 'test2 conference', id: 2 }];
-    this.roles = [{ name: 'organizer', id: 1 }, { name: 'staff', id: 2 }];
-    this.jobs = [{ name: 'volunteers', id: 1 }, { name: 'greeters', id: 2 }];
+    this.roles = [{ name: 'organizer', id: 1 }, { name: 'staff', id: 2 }, { name: 'attendee', id: 3 }];
+    this.jobs = [{ name: 'volunteers', id: 1 }, { name: 'greeters', id: 2 }, { name: 'attendee', id: 3 }];
 
     this.loadConferences = () => {
       console.log('loading conferences');
@@ -39,7 +39,7 @@ module.exports = {
           );
           this.signUp(userData);
         })
-        .catch(err => {
+        .catch((err) => {
           // TODO: This email is already taken, try again.
           console.log('err is', err);
         });

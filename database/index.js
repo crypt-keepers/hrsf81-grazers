@@ -5,7 +5,7 @@ const pool = new Pool(config);
 
 const addUser = user =>
   pool.query(
-    'INSERT INTO users(role, firstname, lastname, email, phone_number, password) values($1, $2, $3, $4, $5, $6) RETURNING id',
+    'INSERT INTO users(role, firstname, lastname, email, phone, password) values($1, $2, $3, $4, $5, $6) RETURNING id',
     [user.role, user.firstname, user.lastname, user.email, user.phone, user.password]
   );
 
@@ -173,6 +173,7 @@ const getAllAttendees = () =>
 
 const getAttendeesById = userId =>
   pool.query(`SELECT * FROM users where role = 'attendee' and id = ${userId}`);
+
 
 module.exports = {
   addUser,

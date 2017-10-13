@@ -1,27 +1,31 @@
-const Promise = require('bluebird');
 const config = require('./config');
+const Twilio = require('twilio');
 
 const { accountSid, authToken } = config;
-const client = require('twilio')(accountSid, authToken);
+const client = new Twilio(accountSid, authToken);
 
-// random 4 digit code, later for verification
-const accessCode = Math.floor(9999 * Math.random());
+const accessCodeLength = 8;
+const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
 
-const sendMessage = (user = 'aaa') => {
-  return new Promise((resolve, reject) => {
-    client.messages.create({
-      to: '+16692613137',
-      from: '+15005550006',
-      body: `You are invited to Grazers Conference Event ${accessCode}`,
-    }, (err, message) => {
-      if (err) {
-        reject(err);
-      }
-      // console.log('message', message);
-      resolve(message.sid);
-    });
-  });
+const accessCode = (n) => {
+  let str = '';
+  for (let i = 0; i < n; i += 1) {
+    const random = Math.floor(alphabets.length * Math.random());
+    str += alphabets[random];
+  }
+  return str;
 };
 
+const capitalize = str => (str.charAt(0).toUpperCase() + str.slice(1));
+
+const sendMessage = (user) => {
+  const code = accessCode(accessCodeLength);
+
+  return client.messages.create({
+    body: `Hello ${capitalize(user.firstname)}, Grazers conference access code is ${code}`,
+    to: `+${user.phone}`,
+    from: '+12065650583'
+  })
+};
 
 module.exports = sendMessage;

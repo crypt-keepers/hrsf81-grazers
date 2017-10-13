@@ -12,7 +12,7 @@ const userTable = `
     firstname VARCHAR(80),
     lastname VARCHAR(80),
     email VARCHAR(80),
-    phone_number VARCHAR(80),
+    phone VARCHAR(80),
     password VARCHAR(80)
 )`;
 
