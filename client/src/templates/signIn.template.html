@@ -1,7 +1,10 @@
 <div flex layout="column" layout-align="center center" class="signin container">
     <div layout="column" layout-align="center center" layout-padding md-whiteframe="5" class="signin-form">
         <form flex layout="row" layout-align="end center" layout-wrap>
-            <h1 flex="100" class="md-display-2">Please sign in.</h1>
+            <h1 flex="100" class="md-display-2 signup-header">Please sign in.</h1>
+            <div class="signup-text" flex="100">
+                <span ng-click="$ctrl.handleClick()">New user? Click here to sign up for a conference.</span>
+            </div>
             <md-input-container flex="100">
                 <label for="email">Email</label>
                 <input id="email" autocomplete="off" type="email" ng-model="form.email"/>
@@ -15,7 +18,7 @@
             </div>
             <div>
                 <md-button class="md-accent md-raised" aria-label="Sign In" ng-click="$ctrl.handleClick()">Sign In</md-button>
-                <md-button class="md-accent md-raised" aria-label="Sign Up" ng-click="$ctrl.signUp()">Sign Up</md-button>
+                <!-- <md-button class="md-accent md-raised" aria-label="Sign Up" ng-click="$ctrl.signUp()">Sign Up</md-button> -->
             </div>
         </form>
     </div>

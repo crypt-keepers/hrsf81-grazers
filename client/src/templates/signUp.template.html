@@ -48,7 +48,7 @@
             required
             ng-model="form.job"
             md-on-open="$ctrl.loadJobs()"
-            placeholder="Job"
+            placeholder="Group"
             ng-disabled="$ctrl.isNewEvent"
         >
           <md-option ng-repeat="job in $ctrl.jobs track by $index" value={{job}}>

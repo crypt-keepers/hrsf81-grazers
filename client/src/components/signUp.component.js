@@ -31,6 +31,7 @@ module.exports = {
             }
           });
           this.eventObj = eventObj;
+          console.log('event obj is', eventObj);
         })
         .catch((err) => {
           console.log('conference err is', err);
@@ -63,7 +64,8 @@ module.exports = {
     };
 
     this.loadRoles = () => {
-      const curConf = JSON.parse($scope.form.conferenceInput);
+      const curConf = $scope.form.conferenceInput ? JSON.parse($scope.form.conferenceInput) : '';
+      if (curConf === '') { return; }
       const curConfId = curConf.id;
       this.roles = Object.keys(this.eventObj[curConfId].groupData);
       const organizerInd = this.roles.indexOf('organizer');
@@ -71,7 +73,8 @@ module.exports = {
     };
 
     this.loadJobs = () => {
-      const curConf = JSON.parse($scope.form.conferenceInput);
+      const curConf = $scope.form.conferenceInput ? JSON.parse($scope.form.conferenceInput) : '';
+      if (curConf === '') { return; }
       const curConfId = curConf.id;
       this.jobs = this.eventObj[curConfId].groupData[$scope.form.role];
     };

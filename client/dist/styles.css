@@ -29,6 +29,19 @@ md-content {
     padding-left: 5px;
 }
 
+.signup-text {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.signup-header {
+    margin-bottom: 10px;
+}
+
+.signup-text:hover {
+    text-decoration: underline;
+}
+
 .create-component {
     padding: 0px;
     padding-left: 5px;
