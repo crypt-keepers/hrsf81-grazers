@@ -4,7 +4,14 @@
       <div class="md-dialog-content" flex layout="column">
         <md-input-container>
           <label for="activity-date">Date:</label>
-          <md-datepicker ng-model="activity.activityDate" md-placeholder="Activity Date:"></md-datepicker>
+          <md-datepicker
+            ng-model="activity.activityDate"
+            md-placeholder="Activity Date:"
+            md-open-on-focus
+            md-min-date="activity.minDate"
+            md-max-date="activity.maxDate"
+          >
+          </md-datepicker>
         </md-input-container>
         <md-input-container>
           <label for="activity-starttime">Start Time:</label>

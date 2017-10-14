@@ -17,6 +17,6 @@
     <schedule-display ng-if="$ctrl.displayedSchedule === 'event'" schedule="$ctrl.eventSchedule" user="$ctrl.user"></schedule-display>
   </md-content>
   <div ng-if="$ctrl.user.role === 'organizer'">
-    <activity-create event-id="$ctrl.user.event_id"></activity-create>
+    <activity-create event-id="$ctrl.event.id" event-info="$ctrl.event"></activity-create>
   </div>
 </div>

@@ -1,9 +1,9 @@
 module.exports = {
   bindings: {
     eventId: '<',
+    eventInfo: '<',
   },
   controller(groups, $http, $mdDialog, $scope) {
-
     this.clearInputs = () => {
       this.activityDate = '';
       this.activityStartTime = '';
@@ -35,7 +35,9 @@ module.exports = {
         activityEndTime: this.activityEndTime,
         activityTitle: this.activityTitle,
         activityLocation: this.activityLocation,
-        activityGroups: this.activityGroups
+        activityGroups: this.activityGroups,
+        minDate: new Date(this.eventInfo.startdate),
+        maxDate: new Date(this.eventInfo.enddate),
       };
 
       groups.get(this.eventId)

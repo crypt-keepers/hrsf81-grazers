@@ -5,8 +5,8 @@ module.exports = {
   },
 
   controller($http, $scope) {
-    this.startDate = new Date();
-    this.endDate = new Date();
+    $scope.startDate = new Date();
+    $scope.endDate = new Date();
     this.groups = [];
 
     $scope.form = {
@@ -20,14 +20,10 @@ module.exports = {
       $scope.form.group = '';
     };
 
-    this.loadEndDate = () => {
-      this.endDate = this.startDate;
-    };
-
     this.handleEventClick = () => {
       const obj = {
-        start_date: this.startDate.toString(),
-        end_date: this.endDate.toString(),
+        start_date: $scope.startDate.toString(),
+        end_date: $scope.endDate.toString(),
         location: $scope.form.location,
         groups: this.groups,
         organizer_id: this.user.id,
@@ -37,11 +33,10 @@ module.exports = {
       $http.post('/event', obj)
         .then(response => response.data)
         .then((data) => {
-          // TODO: conference and conferenceId can probably be deleted
-          this.user.conference = data.name;
-          this.user.conferenceId = data.event_id;
           this.user.event = data.name;
           this.user.event_id = data.event_id;
+          this.user.eventStart = obj.start_date;
+          this.user.eventEnd = obj.end_date;
           this.redirect(this.user);
         })
         .catch((err) => {

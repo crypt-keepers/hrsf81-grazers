@@ -10,8 +10,8 @@
                 <label for="location">Event location</label>
                 <input id="location" autocomplete="off" type="location" ng-model="form.location"/>
             </md-input-container>
-            <md-datepicker ng-model="ctrl.startDate" md-placeholder="Start date"  class="create-component" md-open-on-focus ng-change="$ctrl.loadEndDate()"></md-datepicker>
-            <md-datepicker ng-model="ctrl.endDate" md-placeholder="End date"  class="create-component" md-open-on-focus md-min-date="ctrl.startDate"></md-datepicker>
+            <md-datepicker ng-model="startDate" md-placeholder="Start date"  class="create-component" md-open-on-focus></md-datepicker>
+            <md-datepicker ng-model="endDate" md-placeholder="End date"  class="create-component" md-open-on-focus md-min-date="startDate"></md-datepicker>
             <md-input-container flex="50"  class="create-component">
                 <label for="group">Add Group (i.e. volunteer, greeter)</label>
                 <input id="group" autocomplete="off" type="group" ng-model="form.group"/>
